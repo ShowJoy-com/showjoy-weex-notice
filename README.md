@@ -52,7 +52,7 @@ setListHeight: function () {
 
 ### 原因：
 
-使用<list> <cell>和<loading>组件，调用@loading触发加载更多导致列表抖动。
+使用`<list>` `<cell>`和`<loading>`组件，调用@loading触发加载更多导致列表抖动。
 
 
 
@@ -60,7 +60,7 @@ setListHeight: function () {
 
 **方案1：**（推荐）
 
-> 使用<scroller><div>和<loading>组件，调用@loading触发加载更多。
+> 使用`<scroller>` `<div>`和`<loading>`组件，调用@loading触发加载更多。
 
 ```html
 <!-- scroller结构示例 -->
@@ -80,7 +80,7 @@ setListHeight: function () {
 
 **方案2：**（列表数据全部加载后，无法再触发@loadmore事件）
 
-> 使用<list><cell>组件，调用@loadmore触发加载更多。
+> 使用`<list>` `<cell>`组件，调用@loadmore触发加载更多。
 
 ```html
 <!-- list结构示例 -->
