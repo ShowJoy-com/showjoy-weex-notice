@@ -5,7 +5,7 @@
 
 ## 如何适配屏幕高度？
 
-#### 原因：
+### 原因：
 
 ![iOS屏幕示例](http://cdn1.showjoy.com/images/2e/2ee591732c3c49fe8778d34f111c234e.png)
 
@@ -28,19 +28,19 @@ ppi：每英寸的长度中所具有的像素，屏幕像素密度
 
 
 
-#### 解决方案：
+### 解决方案：
 
 ```javascript
 setListHeight: function () {
   let self = this;
-  let deviceHeight = parseInt(weex.config.env.deviceHeight); 	  //设备高度(px)
-  let rate = weex.config.env.deviceWidth / 750;				 	  //设备宽度(px)比
-  let deviceScale = weex.config.env.scale;					 	  //倍率
+  let deviceHeight = parseInt(weex.config.env.deviceHeight); 	  
+  let rate = weex.config.env.deviceWidth / 750;				 	  
+  let deviceScale = weex.config.env.scale;					 	  
 
  if (weex.config.env.platform.toLowerCase() === 'web') {
     self.listHeight = deviceHeight / rate;
   } else {
-    self.listHeight = (deviceHeight - (64 * deviceScale)) / rate; //list高度(px)
+    self.listHeight = (deviceHeight - (64 * deviceScale)) / rate;
   }
 }
 ```
@@ -50,17 +50,15 @@ setListHeight: function () {
 
 ## Weex列表加载功能抖动？
 
-#### 原因：
+### 原因：
 
 使用<list> <cell>和<loading>组件，调用@loading触发加载更多导致列表抖动。
 
 
 
-#### 解决方案：
+### 解决方案：
 
-**方案1：**
-
-（推荐）
+**方案1：**（推荐）
 
 > 使用<scroller><div>和<loading>组件，调用@loading触发加载更多。
 
@@ -80,9 +78,7 @@ setListHeight: function () {
 
 
 
-**方案2：**
-
-（列表数据全部加载后，无法再触发@loadmore事件）
+**方案2：**（列表数据全部加载后，无法再触发@loadmore事件）
 
 > 使用<list><cell>组件，调用@loadmore触发加载更多。
 
