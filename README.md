@@ -157,3 +157,32 @@ const parentVm = weex.config.env.platform.toLowerCase() === 'web' ?
 目前使用该api的场景为dom元素已经100%渲染完毕，调用此方法可以正确获取数据。
 
 
+## （八）shopBase.close() 兼容
+
+因为 H5 并不支持 `close()` 方法，因此在使用该接口方法时，需要做 `web` 的判断
+
+```js
+if (!self.isWeb) {
+    shopBase.close();
+} else {
+    shopBase.openUrl(`/weexCommon/after-sale-schedule-weex.html`);
+}
+```
+
+## （九）globalEvent 使用
+
+由于 H5 没有 `globalEvent` 模块，因此使用时要先进行判断，更推荐的方案是使用 `self.addEventListener` 方法
+
+```js
+import { event } from 'components/weex-mixins/weex-mixins';
+
+mixins: [event]
+
+self.addEventListener('resume', () => {
+   if (self.isSubmitSuccess) {
+       shopBase.close();
+       shopBase.fireGlobalEvent('close-after-sale-option', { }, () => { });
+   }
+});
+```
+
